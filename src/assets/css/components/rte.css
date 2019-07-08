@@ -1,0 +1,15 @@
+.rte {
+  p,
+  ul,
+  ol {
+    @apply mb-4;
+  }
+
+  a {
+    @apply text-white no-underline border-b-2 border-white;
+  }
+
+  > *:last-child {
+    @apply mb-0;
+  }
+}
