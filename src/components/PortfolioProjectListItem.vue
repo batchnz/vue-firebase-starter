@@ -8,7 +8,6 @@
       <VPill v-if="updatedAt" type="warning" className="ml-4">{{
         updatedAt
       }}</VPill>
-      <VPill v-if="!isCompleted" type="success" className="ml-4">Draft</VPill>
     </router-link>
     <VPill type="danger" className="ml-4" @clicked="onDeleteProject(project.id)"
       >⨉</VPill
@@ -51,17 +50,6 @@ export default {
         return getDate(this.project.updatedAt.toDate());
       }
       return null;
-    },
-    isCompleted() {
-      if (
-        this.project &&
-        this.project.description &&
-        this.project.images &&
-        this.project.name &&
-        this.project.userID
-      )
-        return true;
-      return false;
     }
   },
   methods: {

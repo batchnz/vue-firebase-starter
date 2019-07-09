@@ -7,23 +7,6 @@
         updatedAt
       }}</VPill>
     </h6>
-    <template v-if="project.images && project.images.length">
-      <div v-for="(image, index) in project.images" :key="index" class="mb-2">
-        <img
-          v-cl-image="image"
-          responsive
-          alt="project image"
-          class="block w-full h-auto"
-        />
-        <VButton
-          v-if="isEdit"
-          level="danger"
-          size="tiny"
-          text="Delete image"
-          @clicked="handleOnDelete(image)"
-        />
-      </div>
-    </template>
     <div v-if="project.description" v-html="project.description" />
   </div>
 </template>
@@ -31,7 +14,6 @@
 <script>
 import { getDate } from "@/helpers";
 import VPill from "@/components/bases/VPill";
-import VButton from "@/components/bases/VButton";
 export default {
   name: "portfolio-project-preview",
   props: {
@@ -45,7 +27,7 @@ export default {
       required: false
     }
   },
-  components: { VPill, VButton },
+  components: { VPill },
   computed: {
     createdAt() {
       if (this.project && this.project.createdAt) {
@@ -58,11 +40,6 @@ export default {
         return getDate(this.project.updatedAt.toDate());
       }
       return null;
-    }
-  },
-  methods: {
-    handleOnDelete(imageUri) {
-      this.$emit("onDelete", imageUri);
     }
   }
 };

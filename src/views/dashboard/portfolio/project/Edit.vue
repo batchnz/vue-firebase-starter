@@ -1,21 +1,14 @@
 <template>
   <section>
-    <PortfolioProjectPreview
-      :project="formPreview"
-      :isEdit="true"
-      @onDelete="handleImageDeletion"
-    />
+    <PortfolioProjectPreview :project="formPreview" :isEdit="true" />
     <!-- Editor -->
     <TheFormPortfolioProject
       :userID="user.uid"
       :isSubmitting="isSubmitting"
-      :isImageSaving="isImageSaving"
       :isEdit="true"
       :formPreview="formPreview"
-      :modifyImageUri="modifyImageUri"
       @clicked="handleUpdateProject"
       @changed="handleFormChange"
-      @imageUpload="handleImageUpload"
     />
     <!-- Go back link -->
     <VButtonLink
@@ -30,24 +23,13 @@
 
 <script>
 import { mapState } from "vuex";
-import uuidv1 from "uuid/v1";
-import {
-  toastedError,
-  toastedSuccess,
-  toastedInfo,
-  toastedClear
-} from "@/helpers/toasted";
+import { toastedError, toastedSuccess } from "@/helpers/toasted";
 import { routePaths } from "@/helpers/constants";
 import VButtonLink from "@/components/bases/VButtonLink";
 import TheFormPortfolioProject from "@/components/forms/TheFormPortfolioProject";
 import PortfolioProjectPreview from "@/components/PortfolioProjectPreview";
 
-import {
-  updatePortfolioProject,
-  unionPortfolioProjectImages,
-  removePortfolioProjectImages
-} from "@/firebase/actionsStore";
-import { uploadProjectImage } from "@/firebase/actionsFunction";
+import { updatePortfolioProject } from "@/firebase/actionsStore";
 
 export default {
   name: "page-dashboard-portfolio-project-edit",
@@ -69,11 +51,7 @@ export default {
       error: false,
       projectViewLink: routePaths.dashboard.portfolio.projects.view(
         this.$route.params.id
-      ),
-      // Value is used for passing down to child componet
-      modifyImageUri: "",
-      // Value is used for passing down to child componet
-      isImageSaving: false
+      )
     };
   },
   computed: {
@@ -105,53 +83,6 @@ export default {
         toastedError(this.$toasted, error.message);
       } finally {
         this.isSubmitting = false;
-      }
-    },
-    async handleImageUpload(data) {
-      try {
-        this.isImageSaving = true;
-        // TODO, add error message to errorSchema()
-        if (!data || !data.imageBase64)
-          throw new Error("Server Error: Missing image data.");
-        const projectID = this.$route.params.id;
-        const timestamp = uuidv1();
-        // (1) Upload image to Cloudinary
-        const imageUri = await uploadProjectImage({
-          imageStr: data.imageBase64,
-          cloudinaryConfig: {
-            public_id: timestamp,
-            subFolder: `${this.user.uid}/projects/${projectID}`
-          }
-        });
-        // (2) Insert image URL to fireStore everytime when user inserting
-        await unionPortfolioProjectImages(imageUri, projectID);
-        // Update children component
-        this.modifyImageUri = imageUri;
-        toastedSuccess(this.toasted, "Image is saved");
-      } catch (error) {
-        toastedError(this.$toasted, error.message);
-      } finally {
-        this.isImageSaving = false;
-      }
-    },
-    async handleImageDeletion(ImageUri) {
-      try {
-        toastedInfo(this.$toasted, "Deleting");
-        const projectID = this.$route.params.id;
-        // ! Order contains logic, so it's matter
-        // (1) delete Image from Array (database), Level: Height
-        await removePortfolioProjectImages(ImageUri, projectID);
-        // (2) delete Image from Array (client-side), Level: Height
-        this.modifyImageUri = ImageUri;
-        // (3) delete Image from cloudinary, Level: Low
-      } catch (error) {
-        const _this = this;
-        // * Avoid Notification run into racing condition
-        setTimeout(function() {
-          toastedError(_this.$toasted, error.message);
-        }, 100);
-      } finally {
-        toastedClear();
       }
     }
   }

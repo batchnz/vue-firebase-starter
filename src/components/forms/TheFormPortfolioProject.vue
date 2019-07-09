@@ -13,9 +13,6 @@
         />
       </VColumn>
       <VColumn>
-        <VUploadImage :isSaving="isImageSaving" @onSave="handleUploadImage" />
-      </VColumn>
-      <VColumn>
         <VLabel text="Project Description" />
         <div class="editor__wrapper">
           <VTextEditor @edit="handleOnEdit" :content="form.description" />
@@ -35,7 +32,6 @@ import VRow from "@/components/bases/VRow";
 import VColumn from "@/components/bases/VColumn";
 import VLabel from "@/components/bases/VLabel";
 import VInput from "@/components/bases/VInput";
-import VUploadImage from "@/components/bases/VUploadImage";
 import VButton from "@/components/bases/VButton";
 import VTextEditor from "@/components/bases/VTextEditor";
 
@@ -47,16 +43,10 @@ export default {
     VColumn,
     VButton,
     VInput,
-    VUploadImage,
     VTextEditor
   },
   props: {
     isSubmitting: {
-      type: Boolean,
-      default: false,
-      required: false
-    },
-    isImageSaving: {
       type: Boolean,
       default: false,
       required: false
@@ -68,11 +58,6 @@ export default {
     },
     formPreview: {
       type: Object,
-      required: false
-    },
-    modifyImageUri: {
-      type: String,
-      default: "",
       required: false
     }
   },
@@ -94,19 +79,6 @@ export default {
       }
     };
   },
-  // Watching porps updating
-  watch: {
-    modifyImageUri(newUri, oldUri) {
-      if (newUri === oldUri) return false;
-      const imageIndex = this.form.images.indexOf(newUri);
-      if (imageIndex === -1) this.form.images.push(newUri);
-      else this.form.images.splice(imageIndex, 1);
-    },
-    isImageSaving(newV, oldV) {
-      if (newV === oldV) return false;
-      this.isImageSaving = newV;
-    }
-  },
   methods: {
     handleSubmit() {
       this.$emit("clicked", this.form);
@@ -114,9 +86,6 @@ export default {
     handleOnEdit(html) {
       if (html) this.form.description = html;
       this.$emit("changed", this.form);
-    },
-    handleUploadImage(data) {
-      this.$emit("imageUpload", data);
     }
   }
 };
