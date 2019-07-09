@@ -32,10 +32,10 @@ export default {
   },
   computed: {
     pillType() {
-      if (this.type === "primary") return "bg-blue text-white";
+      if (this.type === "primary") return "bg-blue-400 text-white";
       if (this.type === "secondary") return "bg-gray-300 bg-grey-darker";
-      if (this.type === "success") return "bg-green text-white";
-      if (this.type === "warning") return "bg-orange text-white";
+      if (this.type === "success") return "bg-green-400 text-white";
+      if (this.type === "warning") return "bg-orange-400 text-white";
       if (this.type === "danger") return "bg-red-400 text-white";
       return "bg-blue text-white";
     }
