@@ -12,28 +12,16 @@
           gravity="face"
           alt="avatar"
         />
-
         <div class="mb-5">
           <div
             class="text-2xl leading-none text-grey-darker block font-semibold mb-3"
           >
             {{ user.firstName || "N/A" }} {{ user.lastName || "N/A" }}
           </div>
-          <div
-            v-if="userDoc.specialty"
-            class="text-sm leading-tight text-grey-darker font-bold mb-1"
-          >
-            {{ userDoc.specialty }}
-          </div>
-          <div class="text-xs leading-tight text-grey-darker font-medium">
-            {{ userDoc.city || "unknown city" }},
-            {{ userDoc.country || "unknown county" }}
+          <div class="text-sm leading-tight text-grey-darker font-bold mb-1">
+            {{ userDoc.country }}
           </div>
         </div>
-        <VPill v-if="userDoc.isAcceptingWork" type="success" className="mb-12">
-          Accepting work
-        </VPill>
-        <VPill v-else type="danger" className="mb-12">Not accepting work</VPill>
         <nav class="sidebar-nav">
           <ul class="sidebar-nav__items">
             <li class="sidebar-nav__item">
