@@ -88,13 +88,11 @@
 import { mapState, mapActions } from "vuex";
 import { routePaths } from "@/helpers/constants";
 import { toastedError } from "@/helpers/toasted";
-import VPill from "@/components/bases/VPill";
 import VSpinner from "@/components/bases/VSpinner";
 
 export default {
   name: "dashboard-sidebar",
   components: {
-    VPill,
     VSpinner
   },
   data() {
