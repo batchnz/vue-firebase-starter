@@ -4,26 +4,9 @@
       <div class="h-full w-full overflow-y-auto">
         <header class="md:h-full">
           <h1 class="text-xl md:text-4xl font-medium leading-tight mb-6">
-            Allocate is a new platform for connecting creative freelancers with
-            local businesses. <span class="font-semibold">Launching 2019.</span>
+            Vue Firebase starter
           </h1>
           <div class="text-sm md:text-lg rte md:w-4/5 mb-8 mb:mb-16">
-            <p>
-              <strong class="font-bold">
-                Allocate helps creative freelancers to:
-              </strong>
-            </p>
-            <ul class="list-reset">
-              <VTickItem text="Find more work" />
-              <VTickItem text="Manage work easier" />
-              <VTickItem text="Get paid faster" />
-              <VTickItem text="Reduce admin" />
-            </ul>
-            <p>
-              We're on the hunt for first class creative freelancers based in
-              Auckland, Wellington or Christchurch who would like to be part of
-              a new way to win work.
-            </p>
             <p>
               Please register below.
             </p>

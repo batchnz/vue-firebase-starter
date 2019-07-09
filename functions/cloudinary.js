@@ -16,7 +16,7 @@ exports.uploadImage = function(imageStr, config) {
       imageStr,
       {
         resource_type: "image",
-        folder: `allocate/${config.subFolder}`,
+        folder: `starter/${config.subFolder}`,
         ...config
       },
       function(error, result) {

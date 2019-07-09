@@ -89,8 +89,6 @@ export default {
           <br>
           <blockquote>
             Your project looks amazing  👏
-            <br />
-            – Allocate
           </blockquote>
         `
       }

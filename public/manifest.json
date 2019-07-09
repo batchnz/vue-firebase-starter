@@ -1,6 +1,6 @@
 {
-  "name": "allocate002",
-  "short_name": "allocate002",
+  "name": "vue firebase starter",
+  "short_name": "Starter",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",

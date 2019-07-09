@@ -45,7 +45,7 @@ firefunctions error obj
 customised error obj
 {
     "status": 500,
-    "stack": "Error: Wrong request method\n    at exports.writeFileToLocal (/Users/batch2/Documents/workplace/allocate002/functions/server/middleware.js:43:38)\n    at Layer.handle [as handle_request] (/Users/batch2/Documents/workplace/allocate002/functions/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/batch2/Documents/workplace/allocate002/functions/node_modules/express/lib/router/route.js:137:13)\n    at exports.defineRawBody (/Users/batch2/Documents/workplace/allocate002/functions/server/middleware.js:37:5)\n    at Layer.handle [as handle_request] (/Users/batch2/Documents/workplace/allocate002/functions/node_modules/express/lib/router/layer.js:95:5)\n    at next (/Users/batch2/Documents/workplace/allocate002/functions/node_modules/express/lib/router/route.js:137:13)\n    at next (/Users/batch2/Documents/workplace/allocate002/functions/node_modules/express/lib/router/route.js:131:14)\n    at next (/Users/batch2/Documents/workplace/allocate002/functions/node_modules/express/lib/router/route.js:131:14)\n    at next (/Users/batch2/Documents/workplace/allocate002/functions/node_modules/express/lib/router/route.js:131:14)\n    at next (/Users/batch2/Documents/workplace/allocate002/functions/node_modules/express/lib/router/route.js:131:14)",
+    "stack": "Error: Wrong request method\n    at exports.writeFileToLocal (/Users/.../route.js:131:14)",
     "message": "Internal Server Error"
 }
 
