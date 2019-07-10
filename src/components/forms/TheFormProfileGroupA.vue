@@ -1,5 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
+    <p>GroupA Form</p>
     <VRow>
       <!-- Phone -->
       <VColumn size="1/2">
@@ -14,15 +15,15 @@
         />
       </VColumn>
 
-      <!-- Website -->
-      <VColumn size="full">
-        <VLabel label-for="website" text="Website" />
+      <!-- Address -->
+      <VColumn size="1/2">
+        <VLabel label-for="website" text="Webstie" />
         <VInput
           id="website"
           v-model="form.website"
           :value="form.website"
-          name="website"
-          placeholder="www.disney.com"
+          name=""
+          placeholder="https://www.disney.com/"
           type="url"
         />
       </VColumn>
@@ -31,6 +32,18 @@
       <VColumn size="1/2">
         <VLabel label-for="country" text="country" />
         <TheDropdownCountry v-model="form.country" :value="form.country" />
+      </VColumn>
+
+      <!-- Biography -->
+      <VColumn size="full">
+        <VLabel label-for="biography" text="Biography" />
+        <VTextarea
+          name="biography"
+          id="biography"
+          v-model="form.biography"
+          :value="form.biography"
+          placeholder="Say something about yourself?"
+        />
       </VColumn>
     </VRow>
     <VButton
@@ -50,19 +63,18 @@ import VRow from "@/components/bases/VRow";
 import VColumn from "@/components/bases/VColumn";
 import VLabel from "@/components/bases/VLabel";
 import VInput from "@/components/bases/VInput";
+import VTextarea from "@/components/bases/VTextarea";
 import VButton from "@/components/bases/VButton";
 
-import TheDropdownCountry from "@/components/forms/TheDropdownCountry";
-
 export default {
-  name: "the-form-company",
+  name: "the-form-user",
   components: {
     VRow,
     VColumn,
     VLabel,
     VInput,
-    VButton,
-    TheDropdownCountry
+    VTextarea,
+    VButton
   },
   props: {
     isSubmitting: {
@@ -79,8 +91,10 @@ export default {
       type: Object,
       default() {
         return {
-          country: "New Zealand",
+          // TODO, the hard-code data shold be move into constants.js
           phone: "",
+          biography: "",
+          country: "New Zealand",
           website: ""
         };
       },
@@ -92,9 +106,10 @@ export default {
     return {
       form: {
         phone: initialForm.phone,
-        website: initialForm.website,
+        biography: initialForm.biography,
         // If props value re-write defaul props and it's empty
-        country: initialForm.country || "New Zealand"
+        country: initialForm.country || "New Zealand",
+        website: initialForm.website
       }
     };
   },
@@ -105,3 +120,5 @@ export default {
   }
 };
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

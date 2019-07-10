@@ -1,5 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
+    <p>GroupB Form</p>
     <VRow>
       <!-- Phone -->
       <VColumn size="1/2">
@@ -14,15 +15,15 @@
         />
       </VColumn>
 
-      <!-- Address -->
-      <VColumn size="1/2">
-        <VLabel label-for="website" text="Webstie" />
+      <!-- Website -->
+      <VColumn size="full">
+        <VLabel label-for="website" text="Website" />
         <VInput
           id="website"
           v-model="form.website"
           :value="form.website"
-          name=""
-          placeholder="www.disney.com"
+          name="website"
+          placeholder="https://www.disney.com/"
           type="url"
         />
       </VColumn>
@@ -31,18 +32,6 @@
       <VColumn size="1/2">
         <VLabel label-for="country" text="country" />
         <TheDropdownCountry v-model="form.country" :value="form.country" />
-      </VColumn>
-
-      <!-- Biography -->
-      <VColumn size="full">
-        <VLabel label-for="biography" text="Biography" />
-        <VTextarea
-          name="biography"
-          id="biography"
-          v-model="form.biography"
-          :value="form.biography"
-          placeholder="Say something about yourself?"
-        />
       </VColumn>
     </VRow>
     <VButton
@@ -62,18 +51,19 @@ import VRow from "@/components/bases/VRow";
 import VColumn from "@/components/bases/VColumn";
 import VLabel from "@/components/bases/VLabel";
 import VInput from "@/components/bases/VInput";
-import VTextarea from "@/components/bases/VTextarea";
 import VButton from "@/components/bases/VButton";
 
+import TheDropdownCountry from "@/components/forms/TheDropdownCountry";
+
 export default {
-  name: "the-form-user",
+  name: "the-form-company",
   components: {
     VRow,
     VColumn,
     VLabel,
     VInput,
-    VTextarea,
-    VButton
+    VButton,
+    TheDropdownCountry
   },
   props: {
     isSubmitting: {
@@ -90,10 +80,8 @@ export default {
       type: Object,
       default() {
         return {
-          // TODO, the hard-code data shold be move into constants.js
-          phone: "",
-          biography: "",
           country: "New Zealand",
+          phone: "",
           website: ""
         };
       },
@@ -105,10 +93,9 @@ export default {
     return {
       form: {
         phone: initialForm.phone,
-        biography: initialForm.biography,
+        website: initialForm.website,
         // If props value re-write defaul props and it's empty
-        country: initialForm.country || "New Zealand",
-        website: initialForm.website
+        country: initialForm.country || "New Zealand"
       }
     };
   },
@@ -119,5 +106,3 @@ export default {
   }
 };
 </script>
-
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
