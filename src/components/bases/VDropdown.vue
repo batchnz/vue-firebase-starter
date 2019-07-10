@@ -11,7 +11,7 @@
       <slot />
     </select>
     <div
-      class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"
+      class="pointer-events-none absolute top-0 right-0 flex items-center px-2 text-grey-darker"
     >
       <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
         <path
