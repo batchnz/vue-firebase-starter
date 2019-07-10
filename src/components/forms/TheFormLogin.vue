@@ -9,6 +9,7 @@
           name="email"
           placeholder="walt@disney.com"
           type="email"
+          autocomplete="username email"
         />
       </VColumn>
       <VColumn>
@@ -18,6 +19,7 @@
           v-model="form.password"
           name="password"
           type="password"
+          autocomplete="current-password"
         />
         <router-link
           :to="routePaths.auth.forgotPassword"
