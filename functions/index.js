@@ -1,6 +1,5 @@
 const admin = require("firebase-admin");
 const functions = require("firebase-functions");
-const { server } = require("./server/server");
 
 admin.initializeApp();
 
@@ -8,7 +7,7 @@ const fireStore = admin.firestore();
 fireStore.settings({ timestampsInSnapshots: true });
 const userRef = fireStore.collection("user");
 
-const { HttpsError, onCall, onRequest } = functions.https;
+const { HttpsError, onCall } = functions.https;
 
 function clientErrorHandler(error, code) {
   return new HttpsError(
@@ -17,8 +16,6 @@ function clientErrorHandler(error, code) {
     (error.stack && error.stack) || "an error don't have stack."
   );
 }
-
-exports.server = onRequest(server);
 
 exports.setAdminRole = onCall(async (data, context) => {
   // (1) Data checking
