@@ -65,6 +65,7 @@ import VLabel from "@/components/bases/VLabel";
 import VInput from "@/components/bases/VInput";
 import VTextarea from "@/components/bases/VTextarea";
 import VButton from "@/components/bases/VButton";
+import TheDropdownCountry from "@/components/forms/TheDropdownCountry";
 
 export default {
   name: "the-form-user",
@@ -74,7 +75,8 @@ export default {
     VLabel,
     VInput,
     VTextarea,
-    VButton
+    VButton,
+    TheDropdownCountry
   },
   props: {
     isSubmitting: {
