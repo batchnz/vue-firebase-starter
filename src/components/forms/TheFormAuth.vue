@@ -35,6 +35,7 @@
           name="email"
           placeholder="walt@disney.com"
           type="email"
+          autocomplete="username email"
         />
       </VColumn>
 

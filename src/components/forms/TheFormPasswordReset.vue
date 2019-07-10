@@ -10,6 +10,7 @@
           :value="form.password"
           name="password"
           type="password"
+          autocomplete="new-password"
         />
       </VColumn>
       <!-- Password Confirm -->
@@ -21,6 +22,7 @@
           :value="form.passwordConfirm"
           name="password-confirm"
           type="password"
+          autocomplete="new-password"
         />
       </VColumn>
     </VRow>
