@@ -7,11 +7,8 @@
           <tr class="bg-grey-light">
             <td>Name</td>
             <td>Email</td>
-            <td>City</td>
-            <td>Experience</td>
             <td>Phone</td>
-            <td>Portfolio</td>
-            <td>Specialty</td>
+            <td>Website</td>
             <td>isAdmin</td>
             <td>isCompleted</td>
             <td>Set Addmin</td>
@@ -21,11 +18,8 @@
           <tr v-for="user in users" :key="user.id">
             <td>{{ user.name && user.name }}</td>
             <td>{{ user.email && user.email }}</td>
-            <td>{{ user.city && user.city }}</td>
-            <td>{{ user.experience && user.experience }}</td>
             <td>{{ user.phone && user.phone }}</td>
-            <td>{{ user.portfolio && user.portfolio }}</td>
-            <td>{{ user.specialty && user.specialty }}</td>
+            <td>{{ user.website && user.website }}</td>
             <td>{{ user.claims && user.claims.admin ? "Yes" : "No" }}</td>
             <td>{{ user.claims && user.claims.isCompleted ? "Yes" : "No" }}</td>
             <td>

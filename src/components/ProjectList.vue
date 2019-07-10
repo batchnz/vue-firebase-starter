@@ -6,7 +6,7 @@
     <div v-else-if="!hasProject">No Project</div>
     <!-- UI 3, When the user has projects -->
     <ul v-else class="sidebar-nav__items">
-      <PortfolioProjectListItem
+      <ProjectListItem
         v-for="project in projects"
         :key="project.id"
         :project="project"
@@ -17,16 +17,13 @@
 </template>
 
 <script>
-import {
-  getPortfolioProjectListByUser,
-  deletePortfolioProject
-} from "@/firebase/actionsStore";
+import { getProjectListByUser, deleteProject } from "@/firebase/actionsStore";
 import { toastedError, toastedInfo, toastedClear } from "@/helpers/toasted";
 import VSpinner from "@/components/bases/VSpinner";
-import PortfolioProjectListItem from "@/components/PortfolioProjectListItem";
+import ProjectListItem from "@/components/ProjectListItem";
 export default {
-  name: "portfolio-projects-list",
-  components: { PortfolioProjectListItem, VSpinner },
+  name: "projects-list",
+  components: { ProjectListItem, VSpinner },
   props: {
     userID: {
       type: String,
@@ -52,7 +49,7 @@ export default {
     async getProjectList() {
       try {
         this.isLoading = true;
-        const projects = await getPortfolioProjectListByUser(this.userID);
+        const projects = await getProjectListByUser(this.userID);
         if (!projects || !projects.length) return true;
         this.projects = projects;
       } catch (error) {
@@ -64,7 +61,7 @@ export default {
     async handleProjectDelete(projectUID) {
       try {
         toastedInfo(this.$toasted, "Deleting the project");
-        await deletePortfolioProject(projectUID);
+        await deleteProject(projectUID);
         // TODO, consider relace it whit a lodash method
         this.projects = this.projects.filter(
           project => project.id !== projectUID

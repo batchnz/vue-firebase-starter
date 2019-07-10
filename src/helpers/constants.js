@@ -11,30 +11,18 @@ export const routePaths = {
   // Dashboard
   dashboard: {
     home: "/dashboard",
-    // Desired Dashboard routes
-    // user: {
-    //   account: "/dashboard/user/account",
-    //   profile: "/dashboard/user/profile"
-    // },
-    // company: {
-    //   account: "/dashboard/company/account",
-    //   profile: "/dashboard/company/profile"
-    // },
-    // Temporary Dashboard routes
-    account: "/dashboard/account",
-    portfolio: {
-      home: "/dashboard/portfolio",
-      projects: {
-        home: "/dashboard/portfolio/projects",
-        add: "/dashboard/portfolio/projects/add",
-        view(projectUID) {
-          return `/dashboard/portfolio/projects/${projectUID}`;
-        },
-        edit(projectUID) {
-          return `/dashboard/portfolio/projects/${projectUID}/edit`;
-        }
+    project: {
+      home: "/dashboard/project",
+      add: "/dashboard/project/add",
+      view(projectUID) {
+        return `/dashboard/project/${projectUID}`;
+      },
+      edit(projectUID) {
+        return `/dashboard/project/${projectUID}/edit`;
       }
-    }
+    },
+    profile: "/dashboard/profile",
+    account: "/dashboard/account"
   },
   admin: {
     home: "/admin"

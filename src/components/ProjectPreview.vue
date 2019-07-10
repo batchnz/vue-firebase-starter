@@ -15,7 +15,7 @@
 import { getDate } from "@/helpers";
 import VPill from "@/components/bases/VPill";
 export default {
-  name: "portfolio-project-preview",
+  name: "project-preview",
   props: {
     project: {
       type: Object,

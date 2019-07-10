@@ -47,38 +47,38 @@ const routes = [
       {
         path: "account",
         component: () => import("@/views/dashboard/Account")
+      },
+      {
+        path: "profile",
+        component: () => import("@/views/dashboard/Profile")
       }
     ]
   },
   {
-    path: "/dashboard/portfolio",
+    path: "/dashboard/project",
     component: () => import("@/components/LayoutDashboard"),
     meta: { requiresAuth: true },
     children: [
       {
         path: "",
-        component: () => import("@/views/dashboard/portfolio/Home")
+        component: () => import("@/views/dashboard/project/Home")
       },
       {
-        path: "projects",
-        component: () => import("@/views/dashboard/portfolio/project/Home")
+        path: "add",
+        component: () => import("@/views/dashboard/project/Add")
       },
       {
-        path: "projects/add",
-        component: () => import("@/views/dashboard/portfolio/project/Add")
-      },
-      {
-        path: "projects/:id",
-        component: () => import("@/components/LayoutPortfolioProject"),
-        meta: { portfolioProject: true },
+        path: ":id",
+        component: () => import("@/components/LayoutProject"),
+        meta: { Project: true },
         children: [
           {
             path: "",
-            component: () => import("@/views/dashboard/portfolio/project/View")
+            component: () => import("@/views/dashboard/project/View")
           },
           {
             path: "edit",
-            component: () => import("@/views/dashboard/portfolio/project/Edit")
+            component: () => import("@/views/dashboard/project/Edit")
           }
         ]
       }

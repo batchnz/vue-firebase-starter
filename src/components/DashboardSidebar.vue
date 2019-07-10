@@ -34,25 +34,16 @@
             <li class="sidebar-nav__item">
               <router-link
                 class="sidebar-nav__link"
-                :to="routePaths.dashboard.portfolio.home"
-                >Portfolio</router-link
+                :to="routePaths.dashboard.project.home"
+                >Project</router-link
               >
-              <ul class="sidebar-nav__items sidebar-nav__items--nested">
-                <li class="sidebar-nav__item sidebar-nav__item--nested">
-                  <router-link
-                    class="sidebar-nav__link"
-                    :to="routePaths.dashboard.portfolio.projects.home"
-                    >Projects</router-link
-                  >
-                </li>
-                <li class="sidebar-nav__item sidebar-nav__item--nested">
-                  <router-link
-                    class="sidebar-nav__link"
-                    :to="routePaths.dashboard.portfolio.projects.add"
-                    >Add new projects</router-link
-                  >
-                </li>
-              </ul>
+            </li>
+            <li class="sidebar-nav__item">
+              <router-link
+                class="sidebar-nav__link"
+                :to="routePaths.dashboard.profile"
+                >Profile</router-link
+              >
             </li>
             <li class="sidebar-nav__item">
               <router-link
@@ -68,6 +59,17 @@
               <router-link class="sidebar-nav__link" :to="routePaths.admin.home"
                 >Admin</router-link
               >
+            </li>
+            <li>
+              List Example
+              <ul class="sidebar-nav__items sidebar-nav__items--nested">
+                <li class="sidebar-nav__item sidebar-nav__item--nested">
+                  Nested 1
+                </li>
+                <li class="sidebar-nav__item sidebar-nav__item--nested">
+                  Nested 2
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
@@ -152,7 +154,6 @@ export default {
 
 .sidebar-nav__link {
   @apply text-gray-800 no-underline;
-
   &:hover,
   &:focus,
   &.router-link-exact-active {

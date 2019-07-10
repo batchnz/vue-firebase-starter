@@ -14,41 +14,17 @@
         />
       </VColumn>
 
-      <!-- Protfolio Address -->
+      <!-- Website -->
       <VColumn size="full">
-        <VLabel label-for="portfolio-address" text="Portfolio Address" />
+        <VLabel label-for="website" text="Website" />
         <VInput
-          id="portfolio-address"
-          v-model="form.portfolio"
-          :value="form.portfolio"
-          name="portfolio"
+          id="website"
+          v-model="form.website"
+          :value="form.website"
+          name="website"
           placeholder="www.disney.com"
           type="url"
         />
-      </VColumn>
-
-      <!-- Specialty -->
-      <VColumn size="2/3">
-        <VLabel label-for="specialty" text="Specialty" />
-        <TheDropdownSpecialty
-          v-model="form.specialty"
-          :value="form.experience"
-        />
-      </VColumn>
-
-      <!-- Experience -->
-      <VColumn size="1/3">
-        <VLabel label-for="experience" text="Experience" />
-        <TheDropdownExperience
-          v-model="form.experience"
-          :value="form.experience"
-        />
-      </VColumn>
-
-      <!-- City -->
-      <VColumn size="1/2">
-        <VLabel label-for="city" text="City" />
-        <TheDropdownCity v-model="form.city" :value="form.city" />
       </VColumn>
 
       <!-- Country -->
@@ -76,23 +52,17 @@ import VLabel from "@/components/bases/VLabel";
 import VInput from "@/components/bases/VInput";
 import VButton from "@/components/bases/VButton";
 
-import TheDropdownCity from "@/components/forms/TheDropdownCity";
 import TheDropdownCountry from "@/components/forms/TheDropdownCountry";
-import TheDropdownExperience from "@/components/forms/TheDropdownExperience";
-import TheDropdownSpecialty from "@/components/forms/TheDropdownSpecialty";
 
 export default {
-  name: "the-form-portfolio-company",
+  name: "the-form-company",
   components: {
     VRow,
     VColumn,
     VLabel,
     VInput,
     VButton,
-    TheDropdownCity,
-    TheDropdownCountry,
-    TheDropdownExperience,
-    TheDropdownSpecialty
+    TheDropdownCountry
   },
   props: {
     isSubmitting: {
@@ -109,12 +79,9 @@ export default {
       type: Object,
       default() {
         return {
-          specialty: "Graphic, branding & design",
-          experience: "World class",
-          city: "Auckland",
           country: "New Zealand",
           phone: "",
-          portfolio: ""
+          website: ""
         };
       },
       required: false
@@ -125,11 +92,8 @@ export default {
     return {
       form: {
         phone: initialForm.phone,
-        portfolio: initialForm.portfolio,
+        website: initialForm.website,
         // If props value re-write defaul props and it's empty
-        specialty: initialForm.specialty || "Graphic, branding & design",
-        experience: initialForm.experience || "World class",
-        city: initialForm.city || "Auckland",
         country: initialForm.country || "New Zealand"
       }
     };

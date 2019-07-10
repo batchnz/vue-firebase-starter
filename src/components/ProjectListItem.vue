@@ -20,7 +20,7 @@ import { routePaths } from "@/helpers/constants";
 import { getDate } from "@/helpers";
 import VPill from "@/components/bases/VPill";
 export default {
-  name: "portfolio-project-list-item",
+  name: "project-list-item",
   props: {
     project: {
       type: Object,
@@ -30,12 +30,8 @@ export default {
   components: { VPill },
   data() {
     return {
-      projectLink: routePaths.dashboard.portfolio.projects.view(
-        this.project.id
-      ),
-      projectEditLink: routePaths.dashboard.portfolio.projects.edit(
-        this.project.id
-      )
+      projectLink: routePaths.dashboard.project.view(this.project.id),
+      projectEditLink: routePaths.dashboard.project.edit(this.project.id)
     };
   },
   computed: {

@@ -1,8 +1,9 @@
 <template>
   <section>
+    <h1>Project Home</h1>
     <ProjectList v-if="user.uid" :userID="user.uid" />
     <VButtonLink
-      :to="routePaths.dashboard.projects.add"
+      :to="routePaths.dashboard.project.add"
       text="Add new project"
     />
   </section>

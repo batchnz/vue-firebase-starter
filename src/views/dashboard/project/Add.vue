@@ -5,8 +5,8 @@
       @clicked="handleProjectCreate"
     />
     <VButtonLink
-      :to="projectsHomeLink"
-      text="Go back to projects"
+      :to="projectHomeLink"
+      text="Go back to project"
       className="max-w-xs mt-6"
     />
   </section>
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       isSubmitting: false,
-      projectsHomeLink: routePaths.dashboard.projects.home
+      projectHomeLink: routePaths.dashboard.project.home
     };
   },
   computed: {
@@ -47,7 +47,7 @@ export default {
         form.userID = this.user.uid;
         const projectID = await addProject(form);
         setTimeout(function() {
-          _this.$router.push(`/dashboard/projects/${projectID}/edit`);
+          _this.$router.push(`/dashboard/project/${projectID}/edit`);
         }, 500);
       } catch (error) {
         toastedError(this.$toasted, error.message);

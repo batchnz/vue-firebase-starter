@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      projectEditLink: routePaths.dashboard.projects.edit(this.$route.params.id)
+      projectEditLink: routePaths.dashboard.project.edit(this.$route.params.id)
     };
   }
 };

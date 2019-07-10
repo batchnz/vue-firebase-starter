@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1 class="text-4xl leading-none mb-16">Portfolio</h1>
+    <h1 class="text-4xl leading-none mb-16">Project</h1>
     <VSpinner v-if="isLoading" />
     <template v-else>
       <!-- Warning Box -->
@@ -9,7 +9,7 @@
         class="mb0-4"
       >
         <summary class="text-red mb-4">
-          Warning! you haven't completed your user portfolio.
+          Warning! you haven't completed your user project.
         </summary>
         <p>Please fill up the form.</p>
       </details>
@@ -45,7 +45,7 @@ import TheFormProfileCompany from "@/components/forms/TheFormProfileCompany";
 import TheFormAvatar from "@/components/forms/TheFormAvatar";
 import VSpinner from "@/components/bases/VSpinner";
 export default {
-  name: "page-dashboard-portfolio",
+  name: "page-dashboard-profile",
   components: {
     TheFormProfileUser,
     TheFormProfileCompany,
@@ -104,7 +104,7 @@ export default {
         // (3) Get User Collection
         await this.reloadUserDoc(this.user.uid);
         // (4) Success Message
-        toastedSuccess(this.$toasted, "Your portfolio is updated.");
+        toastedSuccess(this.$toasted, "Your project is updated.");
       } catch (error) {
         toastedError(this.$toasted, error.message);
       } finally {

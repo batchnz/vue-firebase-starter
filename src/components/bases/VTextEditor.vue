@@ -6,7 +6,7 @@
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.heading({ level: 1 }) }"
-          @click.prevent="commands.heading({ level: 1 })"
+          @click.self.prevent="commands.heading({ level: 1 })"
         >
           H1
         </button>
@@ -14,7 +14,7 @@
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.heading({ level: 2 }) }"
-          @click.prevent="commands.heading({ level: 2 })"
+          @click.self.prevent="commands.heading({ level: 2 })"
         >
           H2
         </button>
@@ -22,7 +22,7 @@
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.heading({ level: 3 }) }"
-          @click.prevent="commands.heading({ level: 3 })"
+          @click.self.prevent="commands.heading({ level: 3 })"
         >
           H3
         </button>
@@ -30,7 +30,7 @@
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.heading({ level: 4 }) }"
-          @click.prevent="commands.heading({ level: 4 })"
+          @click.self.prevent="commands.heading({ level: 4 })"
         >
           H4
         </button>
@@ -38,7 +38,7 @@
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.heading({ level: 5 }) }"
-          @click.prevent="commands.heading({ level: 5 })"
+          @click.self.prevent="commands.heading({ level: 5 })"
         >
           H5
         </button>
@@ -46,7 +46,7 @@
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.heading({ level: 6 }) }"
-          @click.prevent="commands.heading({ level: 6 })"
+          @click.self.prevent="commands.heading({ level: 6 })"
         >
           H6
         </button>
@@ -54,7 +54,7 @@
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.paragraph() }"
-          @click.prevent="commands.paragraph"
+          @click.self.prevent="commands.paragraph"
         >
           P
         </button>
@@ -62,7 +62,7 @@
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.bold() }"
-          @click.prevent="commands.bold"
+          @click.self.prevent="commands.bold"
         >
           B
         </button>
@@ -70,7 +70,7 @@
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.italic() }"
-          @click.prevent="commands.italic"
+          @click.self.prevent="commands.italic"
         >
           I
         </button>
@@ -78,7 +78,7 @@
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.strike() }"
-          @click.prevent="commands.strike"
+          @click.self.prevent="commands.strike"
         >
           S
         </button>
@@ -86,7 +86,7 @@
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.underline() }"
-          @click.prevent="commands.underline"
+          @click.self.prevent="commands.underline"
         >
           U
         </button>

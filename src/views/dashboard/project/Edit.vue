@@ -49,7 +49,7 @@ export default {
       isSubmitting: false,
       formPreview: this.project,
       error: false,
-      projectViewLink: routePaths.dashboard.projects.view(this.$route.params.id)
+      projectViewLink: routePaths.dashboard.project.view(this.$route.params.id)
     };
   },
   computed: {
