@@ -118,7 +118,7 @@ export default {
           email: "",
           // Dropdown request a default value
           // TODO, data need to be loaded from db
-          group: userGroup.user.id
+          group: userGroup.groupA.id
         };
       },
       required: false

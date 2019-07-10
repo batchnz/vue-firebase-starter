@@ -6,14 +6,14 @@
       Register
     </h1>
     <div v-if="userGroup">
-      <TheFormProfileCompany
-        v-if="userGroup.id === groupConst.company.id"
+      <TheFormProfileGroupA
+        v-if="userGroup.id === groupConst.groupA.id"
         :is-register="true"
         :isSubmitting="false"
         @clicked="handleSubmit"
       />
-      <TheFormProfileUser
-        v-else-if="userGroup.id === groupConst.user.id"
+      <TheFormProfileGroupB
+        v-if="userGroup.id === groupConst.groupB.id"
         :is-register="true"
         :isSubmitting="false"
         @clicked="handleSubmit"
@@ -28,14 +28,14 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import store from "@/store";
-import TheFormProfileCompany from "@/components/forms/TheFormProfileCompany";
-import TheFormProfileUser from "@/components/forms/TheFormProfileUser";
+import TheFormProfileGroupB from "@/components/forms/TheFormProfileGroupB";
+import TheFormProfileGroupA from "@/components/forms/TheFormProfileGroupA";
 import { routePaths, userGroup as groupConst } from "@/helpers/constants";
 import { toastedError, toastedInfo } from "@/helpers/toasted";
 
 export default {
   name: "page-auth-register-2",
-  components: { TheFormProfileCompany, TheFormProfileUser },
+  components: { TheFormProfileGroupA, TheFormProfileGroupB },
   async beforeRouteEnter(to, from, next) {
     // In-component Router Guard
     try {

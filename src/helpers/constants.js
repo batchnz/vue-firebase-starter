@@ -39,12 +39,12 @@ export const links = {
 };
 
 export const userGroup = {
-  user: {
+  groupA: {
     id: "MFQWhtzAFhBD92W8s59A",
-    name: "Freelancer"
+    name: "GroupA"
   },
-  company: {
+  groupB: {
     id: "Q7E2pi4osxUunt2rLmiP",
-    name: "Company"
+    name: "GroupB"
   }
 };

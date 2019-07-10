@@ -1,6 +1,5 @@
 <template>
   <section>
-    <h1 class="text-4xl leading-none mb-16">Project</h1>
     <VSpinner v-if="isLoading" />
     <template v-else>
       <!-- Warning Box -->
@@ -9,21 +8,21 @@
         class="mb0-4"
       >
         <summary class="text-red mb-4">
-          Warning! you haven't completed your user project.
+          Warning! you haven't completed your user Profile.
         </summary>
         <p>Please fill up the form.</p>
       </details>
       <!-- Group dispaly
-      <h3 class="mb-4">{{ userGroup.name }} Form</h3> -->
+      <h3 class="mb-4">{{ userGroup.groupA }} Form</h3> -->
       <!-- Form -->
-      <TheFormProfileUser
-        v-if="userGroup.id === groupConst.user.id"
+      <TheFormProfileGroupA
+        v-if="userGroup.id === groupConst.groupA.id"
         :initial-form="userDoc"
         :isSubmitting="isSubmitting"
         @clicked="handleUpdateProfile"
       />
-      <TheFormProfileCompany
-        v-else-if="userGroup.id === groupConst.company.id"
+      <TheFormProfileGroupB
+        v-else-if="userGroup.id === groupConst.groupB.id"
         :initial-form="userDoc"
         :isSubmitting="isSubmitting"
         @clicked="handleUpdateProfile"
@@ -40,15 +39,15 @@
 import { mapState, mapActions } from "vuex";
 import { userGroup as groupConst } from "@/helpers/constants";
 import { toastedError, toastedSuccess } from "@/helpers/toasted";
-import TheFormProfileUser from "@/components/forms/TheFormProfileUser";
-import TheFormProfileCompany from "@/components/forms/TheFormProfileCompany";
+import TheFormProfileGroupA from "@/components/forms/TheFormProfileGroupA";
+import TheFormProfileGroupB from "@/components/forms/TheFormProfileGroupB";
 import TheFormAvatar from "@/components/forms/TheFormAvatar";
 import VSpinner from "@/components/bases/VSpinner";
 export default {
   name: "page-dashboard-profile",
   components: {
-    TheFormProfileUser,
-    TheFormProfileCompany,
+    TheFormProfileGroupA,
+    TheFormProfileGroupB,
     TheFormAvatar,
     VSpinner
   },
