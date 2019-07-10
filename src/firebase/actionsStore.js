@@ -11,7 +11,7 @@ import { errorToObject } from "@/helpers/errorHandler";
 
 const userRef = fireStore.collection("user");
 const groupRef = fireStore.collection("userGroup");
-const projectsRef = fireStore.collection("portfolioProjects");
+const projectsRef = fireStore.collection("projects");
 
 export const getUserList = async () => {
   try {
@@ -54,7 +54,7 @@ export const getUserGroupList = async () => {
   }
 };
 
-export const getPortfolioProjectList = async () => {
+export const getProjectList = async () => {
   try {
     const projectList = [];
     const snapshot = await projectsRef.get();
@@ -70,7 +70,7 @@ export const getPortfolioProjectList = async () => {
   }
 };
 
-export const getPortfolioProjectListByUser = async uid => {
+export const getProjectListByUser = async uid => {
   try {
     const projectList = [];
     const snapshot = await projectsRef.where("userID", "==", uid).get();
@@ -86,7 +86,7 @@ export const getPortfolioProjectListByUser = async uid => {
   }
 };
 
-export const getPortfolioProject = async projectUID => {
+export const getProject = async projectUID => {
   try {
     const userSnapshot = await projectsRef.doc(projectUID).get();
     return userSnapshot.data();
@@ -95,7 +95,7 @@ export const getPortfolioProject = async projectUID => {
   }
 };
 
-export const addPortfolioProject = async form => {
+export const addProject = async form => {
   try {
     form.createdAt = FieldValue.serverTimestamp();
     const { id } = await projectsRef.add(form);
@@ -105,7 +105,7 @@ export const addPortfolioProject = async form => {
   }
 };
 
-export const updatePortfolioProject = async (form, projectUID) => {
+export const updateProject = async (form, projectUID) => {
   try {
     form.updatedAt = FieldValue.serverTimestamp();
     await projectsRef.doc(projectUID).update(form);
@@ -114,7 +114,7 @@ export const updatePortfolioProject = async (form, projectUID) => {
   }
 };
 
-export const unionPortfolioProjectImages = async (url, projectUID) => {
+export const unionProjectImages = async (url, projectUID) => {
   try {
     await projectsRef.doc(projectUID).update({
       images: FieldValue.arrayUnion(url)
@@ -124,7 +124,7 @@ export const unionPortfolioProjectImages = async (url, projectUID) => {
   }
 };
 
-export const removePortfolioProjectImages = async (url, projectUID) => {
+export const removeProjectImages = async (url, projectUID) => {
   try {
     await projectsRef.doc(projectUID).update({
       images: FieldValue.arrayRemove(url)
@@ -134,7 +134,7 @@ export const removePortfolioProjectImages = async (url, projectUID) => {
   }
 };
 
-export const setPortfolioProject = async (uid, form) => {
+export const setProject = async (uid, form) => {
   try {
     const { id } = await projectsRef.doc(uid).set(form);
     return id;
@@ -143,7 +143,7 @@ export const setPortfolioProject = async (uid, form) => {
   }
 };
 
-export const deletePortfolioProject = async projectUID => {
+export const deleteProject = async projectUID => {
   try {
     await projectsRef.doc(projectUID).delete();
     return true;
@@ -152,7 +152,7 @@ export const deletePortfolioProject = async projectUID => {
   }
 };
 
-export const deletePortfolioProjectField = async (field, projectUID) => {
+export const deleteProjectField = async (field, projectUID) => {
   try {
     await projectsRef.doc(projectUID).update({
       [field]: FieldValue.delete()
