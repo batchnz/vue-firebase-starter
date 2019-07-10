@@ -35,7 +35,7 @@
               <router-link
                 class="sidebar-nav__link"
                 :to="routePaths.dashboard.project.home"
-                >Project</router-link
+                >Projects</router-link
               >
               <ul class="sidebar-nav__items sidebar-nav__items--nested">
                 <li class="sidebar-nav__item sidebar-nav__item--nested">
