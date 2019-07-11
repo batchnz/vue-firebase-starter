@@ -28,8 +28,7 @@ export const updateAuthInfo = async form => {
     const user = fireAuth.currentUser;
     await user.updateProfile({
       ...(form.firstName &&
-        form.lastName && { displayName: `${form.firstName} ${form.lastName}` }),
-      ...(form.email && { email: form.email })
+        form.lastName && { displayName: `${form.firstName} ${form.lastName}` })
     });
   } catch (error) {
     throw errorToObject(error);
@@ -59,6 +58,7 @@ export const sendPasswordResetEmail = async email => {
 export const updateAuthEmail = async email => {
   try {
     const user = fireAuth.currentUser;
+    if (user.email === email) return;
     await user.updateEmail(email);
   } catch (error) {
     throw errorToObject(error);

@@ -19,7 +19,7 @@ import { pickBy } from "lodash";
 import { mapState, mapActions } from "vuex";
 import TheFormAuth from "@/components/forms/TheFormAuth";
 import TheFormPasswordReset from "@/components/forms/TheFormPasswordReset";
-import { updatePassword } from "@/firebase/actionsAuth";
+import { updatePassword, updateAuthEmail } from "@/firebase/actionsAuth";
 import { toastedError, toastedSuccess } from "@/helpers/toasted";
 
 export default {
@@ -43,7 +43,6 @@ export default {
         // (2) Update firebase Auth
         const compactedForm = pickBy(form);
         await this.updateAuthInfo(compactedForm);
-        // (2)
         // (3) Sent Success message
         toastedSuccess(this.$toasted, "your account info is updated");
       } catch (error) {

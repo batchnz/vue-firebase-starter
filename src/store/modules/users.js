@@ -5,6 +5,7 @@ import { fireAuth, fireStore } from "@/firebase/index";
 import {
   updateAuthInfo,
   updatePassword,
+  updateAuthEmail,
   sendPasswordResetEmail
 } from "@/firebase/actionsAuth";
 import router from "@/router";
@@ -163,6 +164,9 @@ const actions = {
     try {
       if (!form) throw new Error(errorMsg.form);
       await updateAuthInfo(form);
+      if (form.email) {
+        await updateAuthEmail(form.email);
+      }
       commit("setUser", form);
     } catch (error) {
       throw errorToObject(error);

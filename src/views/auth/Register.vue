@@ -47,7 +47,9 @@ export default {
         // (3) Login
         await this.login(form);
         // (4) Redirect to next step
-        this.$router.push(routePaths.auth.register2);
+        setTimeout(() => {
+          this.$router.push(routePaths.auth.register2);
+        });
       } catch (error) {
         toastedError(this.$toasted, error.message);
       } finally {
