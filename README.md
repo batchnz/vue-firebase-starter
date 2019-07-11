@@ -10,6 +10,26 @@ A vue starter project, that using Firebase suite.
 * Firebase Function
 * Firebase Hosting
 
+## 🚀 Quick start
+
+1.  **Install the Gatsby CLI.**
+
+    The Gatsby CLI helps you create new sites using Gatsby starters (like this one!)
+
+    ```sh
+    # install the Gatsby CLI globally
+    npm install -g gatsby-cli
+
+2.  **Replace the site data.**
+
+    1. `manifest.json`
+    2. `public/index.html`
+
+    ```sh
+    # create a new Gatsby site using the starter
+    gatsby new my-project https://github.com/batchnz/gatsby-starter-prismic
+    ```
+
 ## Project setup
 ```
 yarn install

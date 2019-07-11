@@ -99,9 +99,6 @@ export default {
       }
     };
   },
-  mounted() {
-    console.log(this.initialForm);
-  },
   methods: {
     handleSubmit() {
       this.$emit("clicked", this.form);
