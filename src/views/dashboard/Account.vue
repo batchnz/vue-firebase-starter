@@ -19,7 +19,7 @@ import { pickBy } from "lodash";
 import { mapState, mapActions } from "vuex";
 import TheFormAuth from "@/components/forms/TheFormAuth";
 import TheFormPasswordReset from "@/components/forms/TheFormPasswordReset";
-import { updatePassword, updateAuthEmail } from "@/firebase/actionsAuth";
+import { updatePassword } from "@/firebase/actionsAuth";
 import { toastedError, toastedSuccess } from "@/helpers/toasted";
 
 export default {
