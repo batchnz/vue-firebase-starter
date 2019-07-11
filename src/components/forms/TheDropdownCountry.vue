@@ -1,10 +1,14 @@
 <template>
-  <VDropdown id="country" name="country" :value="value" @input="handleDropdown">
+  <VDropdown
+    id="country"
+    name="country"
+    v-model="selected"
+    @input="handleDropdown"
+  >
     <option
       v-for="country in countries"
       :key="country.value"
       :value="country.value"
-      :selected="country.value === value"
     >
       {{ country.label }}
     </option>
@@ -26,8 +30,17 @@ export default {
   },
   data() {
     return {
-      countries: [{ value: "New Zealand", label: "New Zealand" }]
+      selected: "New Zealand",
+      countries: [
+        { value: "New Zealand", label: "New Zealand" },
+        { value: "Australia", label: "Australia" }
+      ]
     };
+  },
+  mounted() {
+    if (this.value) {
+      this.selected = this.value;
+    }
   },
   methods: {
     handleDropdown(value) {

@@ -29,7 +29,6 @@ export const updateAuthInfo = async form => {
     await user.updateProfile({
       ...(form.firstName &&
         form.lastName && { displayName: `${form.firstName} ${form.lastName}` }),
-      ...(form.avatar && { photoURL: form.avatar }),
       ...(form.email && { email: form.email })
     });
   } catch (error) {

@@ -82,25 +82,3 @@ exports.deleteUser = onCall(async (data, context) => {
     throw clientErrorHandler(error);
   }
 });
-
-// https://firebase.google.com/docs/reference/functions/functions.https.HttpsError
-// https://firebase.google.com/docs/functions/http-events
-
-exports.uploadImageCloudinaryData64 = onCall(async data => {
-  const { uploadImage } = require("./cloudinary");
-  // (1) Checking critical argument
-  if (!data.imageStr)
-    throw new HttpsError("invalid-argument", "Image data is missing.");
-  // (2) Integrating optional argument
-  const config = {
-    subFolder: "unclassified",
-    ...(data.cloudinaryConfig && data.cloudinaryConfig)
-  };
-  // (3) Start to uploading Image
-  try {
-    const result = await uploadImage(data.imageStr, config);
-    return result;
-  } catch (error) {
-    throw clientErrorHandler(error);
-  }
-});

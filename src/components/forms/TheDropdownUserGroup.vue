@@ -1,5 +1,11 @@
 <template>
-  <VDropdown id="spcialty" name="group" @input="handleDropdown">
+  <VDropdown
+    id="userGroup"
+    name="group"
+    @input="handleDropdown"
+    ref="dropdown"
+    v-model="selected"
+  >
     <option v-for="group in userGroup" :key="group.id" :value="group.id">
       {{ group.name }}
     </option>
@@ -15,7 +21,8 @@ export default {
   components: { VDropdown },
   data() {
     return {
-      userGroup
+      userGroup,
+      selected: userGroup.groupA.id
     };
   },
   methods: {

@@ -32,12 +32,6 @@ export const routePaths = {
   }
 };
 
-export const links = {
-  // TODO, On launch, fix/tidy url if possible
-  avatar:
-    "https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Penguin-512.png"
-};
-
 export const userGroup = {
   groupA: {
     id: "MFQWhtzAFhBD92W8s59A",

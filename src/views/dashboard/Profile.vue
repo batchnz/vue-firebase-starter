@@ -30,8 +30,6 @@
       <p v-else>
         Oops, something wrong, Please refresh the page.
       </p>
-      <!-- Form Avatar -->
-      <TheFormAvatar :user="user" />
     </template>
   </section>
 </template>
@@ -41,14 +39,12 @@ import { userGroup as groupConst } from "@/helpers/constants";
 import { toastedError, toastedSuccess } from "@/helpers/toasted";
 import TheFormProfileGroupA from "@/components/forms/TheFormProfileGroupA";
 import TheFormProfileGroupB from "@/components/forms/TheFormProfileGroupB";
-import TheFormAvatar from "@/components/forms/TheFormAvatar";
 import VSpinner from "@/components/bases/VSpinner";
 export default {
   name: "page-dashboard-profile",
   components: {
     TheFormProfileGroupA,
     TheFormProfileGroupB,
-    TheFormAvatar,
     VSpinner
   },
   data() {

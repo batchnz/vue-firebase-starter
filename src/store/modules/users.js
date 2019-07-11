@@ -1,6 +1,6 @@
 import consola from "consola";
 import { errorToObject, errorMsg } from "@/helpers/errorHandler";
-import { routePaths, links } from "@/helpers/constants";
+import { routePaths } from "@/helpers/constants";
 import { fireAuth, fireStore } from "@/firebase/index";
 import {
   updateAuthInfo,
@@ -35,7 +35,6 @@ const mutations = {
           firstName: user.displayName.split(" ")[0],
           lastName: user.displayName.split(" ")[1]
         }),
-        ...(user.photoURL && { avatar: user.photoURL }),
         ...(user.firstName && { firstName: user.firstName }),
         ...(user.lastName && { lastName: user.lastName }),
         ...(user.email && { email: user.email }),
@@ -46,9 +45,6 @@ const mutations = {
         Object.assign(state.user.claim, { admin: user.claims.admin });
       }
     }
-  },
-  setUserAvatar(state, url) {
-    if (url) state.user.avatar = url;
   },
   setUserDoc(state, userDoc) {
     if (!userDoc) state.userDoc = userDoc;
@@ -77,8 +73,7 @@ const actions = {
       );
       // 2. Update the new user in firebase Auth with extra info
       const updateAuthProfile = user.updateProfile({
-        displayName: `${firstName} ${lastName}`,
-        photoURL: links.avatar
+        displayName: `${firstName} ${lastName}`
       });
       // 3.Store user's basic info in fireStore user collection
       const createNewUserDoc = userRef.doc(user.uid).set({
@@ -198,9 +193,6 @@ const actions = {
     } catch (error) {
       throw errorToObject(error);
     }
-  },
-  updateUserAvatar({ commit }, url) {
-    commit("setUserAvatar", url);
   },
   async reloadUserAuth({ commit }) {
     try {

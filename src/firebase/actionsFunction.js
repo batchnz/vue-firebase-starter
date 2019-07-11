@@ -4,10 +4,6 @@ import { errorToObject } from "@/helpers/errorHandler";
 const setAdminRoleFun = fireFunctions.httpsCallable("setAdminRole");
 const getUserListFun = fireFunctions.httpsCallable("getUserList");
 const deleteUserFun = fireFunctions.httpsCallable("deleteUser");
-const uploadImageCloudinaryData64Fun = fireFunctions.httpsCallable(
-  "uploadImageCloudinaryData64"
-);
-
 export const setAdminRole = async data => {
   try {
     // TODO, data checking
@@ -42,38 +38,6 @@ export const deleteUser = async data => {
     throw new Error({
       code: "Error",
       message: "deleteUser - Request failed"
-    });
-  } catch (error) {
-    throw errorToObject(error);
-  }
-};
-
-export const uploadAvatarImage = async data => {
-  try {
-    const result = await uploadImageCloudinaryData64Fun(data);
-    if (result && result.data) {
-      const { version, public_id } = result.data;
-      return `v${version}/${public_id}`;
-    }
-    throw new Error({
-      code: "Error",
-      message: "uploadAvatarImage - Request failed"
-    });
-  } catch (error) {
-    throw errorToObject(error);
-  }
-};
-
-export const uploadProjectImage = async data => {
-  try {
-    const result = await uploadImageCloudinaryData64Fun(data);
-    if (result && result.data) {
-      const { version, public_id } = result.data;
-      return `v${version}/${public_id}`;
-    }
-    throw new Error({
-      code: "Error",
-      message: "uploadAvatarImage - Request failed"
     });
   } catch (error) {
     throw errorToObject(error);

@@ -3,15 +3,6 @@
     <aside>
       <VSpinner v-if="isLoading" />
       <template v-else>
-        <img
-          class="h-20 w-20 rounded-full shadow mb-4"
-          v-cl-image="user.avatar"
-          width="150"
-          height="150"
-          crop="fill"
-          gravity="face"
-          alt="avatar"
-        />
         <div class="mb-5">
           <div
             class="text-2xl leading-none text-grey-darker block font-semibold mb-3"
