@@ -1,6 +1,8 @@
 {
   "hosting": {
     "public": "dist",
+    "trailingSlash": false,
+    "cleanUrls": true,
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -10,7 +12,24 @@
       {
         "source": "**",
         "destination": "/index.html"
+      },
+      {
+        "source": "/corsTest",
+        "function": "corsTest"
       }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|eot|otf|ttf|ttc|woff|font.css)",
+        "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
+      },
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png)",
+        "headers": [{ "key": "Cache-Control", "value": "max-age=7200" }]
+      }
+    ],
+    "predeploy": [
+      "yarn build"
     ]
   },
   "database": {
@@ -22,5 +41,13 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "emulators": {
+    "functions": {
+      "port": "5003"
+    },
+    "firestore": {
+      "port": "5002"
+    }
   }
 }

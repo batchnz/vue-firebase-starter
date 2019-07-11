@@ -4,6 +4,7 @@
   "scripts": {
     "serve": "firebase serve --only functions --port=9000",
     "shell": "firebase functions:shell",
+    "emulators": "firebase emulators:start --only functions",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"

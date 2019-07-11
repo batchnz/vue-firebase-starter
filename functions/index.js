@@ -7,7 +7,7 @@ const fireStore = admin.firestore();
 fireStore.settings({ timestampsInSnapshots: true });
 const userRef = fireStore.collection("user");
 
-const { HttpsError, onCall } = functions.https;
+const { HttpsError, onCall, onRequest } = functions.https;
 
 function clientErrorHandler(error, code) {
   return new HttpsError(
@@ -81,4 +81,8 @@ exports.deleteUser = onCall(async (data, context) => {
   } catch (error) {
     throw clientErrorHandler(error);
   }
+});
+
+exports.corsTest = onRequest((request, response) => {
+  response.json({ message: "success" });
 });

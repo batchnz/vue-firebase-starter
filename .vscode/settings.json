@@ -15,6 +15,7 @@
 "scss.validate": false,
 "cSpell.words": [
   "firebaserc",
+  "predeploy",
   "tiptap"
 ]
 }
