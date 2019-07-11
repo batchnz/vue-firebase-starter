@@ -123,7 +123,9 @@ const actions = {
             if (!user.claims) user.claims = {};
             if (claims) Object.assign(user.claims, claims);
             commit("setUser", user);
-            router.push(routePaths.dashboard.home);
+            // ! Do not redirect user on the listener
+            // ! Will loss controls the routing behaviour
+            // router.push(routePaths.dashboard.home);
           }
         } else {
           consola.info("Unauthenticated User - auto signout");
