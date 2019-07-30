@@ -7,8 +7,7 @@
         <VLabel label-for="phone" text="Phone" />
         <VInput
           id="phone"
-          v-model="form.phone"
-          :value="form.phone"
+          :value.sync="form.phone"
           name="phone"
           placeholder="03 421 6601"
           type="tel"
@@ -20,9 +19,8 @@
         <VLabel label-for="website" text="Webstie" />
         <VInput
           id="website"
-          v-model="form.website"
-          :value="form.website"
-          name=""
+          :value.sync="form.website"
+          name="website"
           placeholder="https://www.disney.com/"
           type="url"
         />
@@ -31,7 +29,7 @@
       <!-- Country -->
       <VColumn size="1/2">
         <VLabel label-for="country" text="country" />
-        <TheDropdownCountry v-model="form.country" :value="form.country" />
+        <TheDropdownCountry :value.sync="form.country" />
       </VColumn>
 
       <!-- Biography -->
@@ -40,12 +38,12 @@
         <VTextarea
           name="biography"
           id="biography"
-          v-model="form.biography"
-          :value="form.biography"
+          :value.sync="form.biography"
           placeholder="Say something about yourself?"
         />
       </VColumn>
     </VRow>
+
     <VButton
       type="submit"
       :disabled="isSubmitting"
@@ -117,7 +115,8 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$emit("clicked", this.form);
+      console.log(this.form, "this.form");
+      // this.$emit("clicked", this.form);
     }
   }
 };
