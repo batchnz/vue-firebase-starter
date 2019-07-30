@@ -72,7 +72,7 @@
       "parser": "babel-eslint"
     }
   },
-  "browserslist": ["default"],
+  "browserslist": ["defaults"],
   "jest": {
     "moduleFileExtensions": [
       "js",
