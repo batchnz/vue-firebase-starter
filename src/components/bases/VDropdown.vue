@@ -1,12 +1,9 @@
 <template>
   <div class="relative">
     <select
-      :id="id"
-      :name="name"
-      :value="value"
       class="appearance-none block w-full bg-gray-300 text-gray-500 border border-gray-300 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 focus:shadow"
-      required
       @input="$emit('update:value', $event.target.value)"
+      v-bind="$attrs"
     >
       <slot />
     </select>
@@ -25,22 +22,6 @@
 <script>
 export default {
   name: "v-dropdown",
-  props: {
-    id: {
-      type: String,
-      default: "",
-      required: false
-    },
-    name: {
-      type: String,
-      default: "text",
-      required: false
-    },
-    value: {
-      type: String,
-      default: "",
-      required: false
-    }
-  }
+  inheritAttrs: false
 };
 </script>

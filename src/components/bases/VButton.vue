@@ -4,6 +4,7 @@
     :type="type"
     :disabled="disabled"
     @click="handleClick"
+    v-bind="$attrs"
   >
     {{ text }}
   </button>
