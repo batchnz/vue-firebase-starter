@@ -2,10 +2,10 @@
   <section>
     <h1 class="text-4xl leading-none mb-16">Account</h1>
     <TheFormAuth
+      class="mb-6 pb-6 border-b-2 border-gray-light"
       :initial-form="user"
       :isSubmitting="isSubmitting"
       @clicked="handleUpdateUserAccount"
-      className="mb-6 pb-6 border-b-2 border-gray-light"
     />
     <TheFormPasswordReset
       :isSubmitting="isSubmittingPasswordReset"
