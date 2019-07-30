@@ -5,7 +5,8 @@ module.exports = {
     [
       "@vue/app",
       {
-        modules: "commonjs"
+        modules: "commonjs",
+        polyfills: ["es7.promise.finally"]
       }
     ]
   ]
