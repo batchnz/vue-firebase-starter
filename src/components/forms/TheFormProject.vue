@@ -5,9 +5,8 @@
         <VLabel label-for="project-name" text="Project Name" />
         <VInput
           id="project-name"
-          v-model="form.name"
+          :value.sync="form.name"
           type="text"
-          name="projectName"
           placeholder="Project Name"
           @input="handleOnEdit(false)"
         />
@@ -28,6 +27,7 @@
 </template>
 
 <script>
+// TODO, go over the logic
 import VRow from "@/components/bases/VRow";
 import VColumn from "@/components/bases/VColumn";
 import VLabel from "@/components/bases/VLabel";
@@ -65,7 +65,6 @@ export default {
     return {
       form: {
         name: (this.formPreview && this.formPreview.name) || "",
-        images: (this.formPreview && this.formPreview.images) || [],
         description:
           (this.formPreview && this.formPreview.description) ||
           `

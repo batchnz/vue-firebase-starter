@@ -7,11 +7,10 @@
         <VLabel label-for="phone" text="Phone" />
         <VInput
           id="phone"
-          v-model="form.phone"
-          :value="form.phone"
-          name="phone"
+          :value.sync="form.phone"
           placeholder="03 421 6601"
           type="tel"
+          required
         />
       </VColumn>
 
@@ -20,18 +19,25 @@
         <VLabel label-for="website" text="Website" />
         <VInput
           id="website"
-          v-model="form.website"
-          :value="form.website"
-          name="website"
+          :value.sync="form.website"
           placeholder="https://www.disney.com/"
           type="url"
+          required
         />
       </VColumn>
 
       <!-- Country -->
       <VColumn size="1/2">
         <VLabel label-for="country" text="country" />
-        <TheDropdownCountry v-model="form.country" :value="form.country" />
+        <VDropdown id="country" :value.sync="form.country" required>
+          <option
+            v-for="country in countries"
+            :key="country.value"
+            :value="country.value"
+          >
+            {{ country.label }}
+          </option>
+        </VDropdown>
       </VColumn>
     </VRow>
     <VButton
@@ -52,8 +58,7 @@ import VColumn from "@/components/bases/VColumn";
 import VLabel from "@/components/bases/VLabel";
 import VInput from "@/components/bases/VInput";
 import VButton from "@/components/bases/VButton";
-
-import TheDropdownCountry from "@/components/forms/TheDropdownCountry";
+import VDropdown from "@/components/bases/VDropdown";
 
 export default {
   name: "the-form-company",
@@ -63,7 +68,7 @@ export default {
     VLabel,
     VInput,
     VButton,
-    TheDropdownCountry
+    VDropdown
   },
   props: {
     isSubmitting: {
@@ -96,7 +101,11 @@ export default {
         website: initialForm.website,
         // If props value re-write defaul props and it's empty
         country: initialForm.country || "New Zealand"
-      }
+      },
+      countries: [
+        { value: "New Zealand", label: "New Zealand" },
+        { value: "Australia", label: "Australia" }
+      ]
     };
   },
   methods: {

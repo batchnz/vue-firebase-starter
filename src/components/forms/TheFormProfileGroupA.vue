@@ -8,38 +8,46 @@
         <VInput
           id="phone"
           :value.sync="form.phone"
-          name="phone"
           placeholder="03 421 6601"
           type="tel"
+          required
         />
       </VColumn>
 
-      <!-- Address -->
+      <!-- Website -->
       <VColumn size="1/2">
         <VLabel label-for="website" text="Webstie" />
         <VInput
           id="website"
           :value.sync="form.website"
-          name="website"
           placeholder="https://www.disney.com/"
           type="url"
+          required
         />
       </VColumn>
 
       <!-- Country -->
       <VColumn size="1/2">
         <VLabel label-for="country" text="country" />
-        <TheDropdownCountry :value.sync="form.country" />
+        <VDropdown id="country" :value.sync="form.country" required>
+          <option
+            v-for="country in countries"
+            :key="country.value"
+            :value="country.value"
+          >
+            {{ country.label }}
+          </option>
+        </VDropdown>
       </VColumn>
 
       <!-- Biography -->
       <VColumn size="full">
         <VLabel label-for="biography" text="Biography" />
         <VTextarea
-          name="biography"
           id="biography"
           :value.sync="form.biography"
           placeholder="Say something about yourself?"
+          required
         />
       </VColumn>
     </VRow>
@@ -63,7 +71,7 @@ import VLabel from "@/components/bases/VLabel";
 import VInput from "@/components/bases/VInput";
 import VTextarea from "@/components/bases/VTextarea";
 import VButton from "@/components/bases/VButton";
-import TheDropdownCountry from "@/components/forms/TheDropdownCountry";
+import VDropdown from "@/components/bases/VDropdown";
 
 export default {
   name: "the-form-user",
@@ -72,9 +80,9 @@ export default {
     VColumn,
     VLabel,
     VInput,
+    VDropdown,
     VTextarea,
-    VButton,
-    TheDropdownCountry
+    VButton
   },
   props: {
     isSubmitting: {
@@ -110,13 +118,16 @@ export default {
         // If props value re-write defaul props and it's empty
         country: initialForm.country || "New Zealand",
         website: initialForm.website
-      }
+      },
+      countries: [
+        { value: "New Zealand", label: "New Zealand" },
+        { value: "Australia", label: "Australia" }
+      ]
     };
   },
   methods: {
     handleSubmit() {
-      console.log(this.form, "this.form");
-      // this.$emit("clicked", this.form);
+      this.$emit("clicked", this.form);
     }
   }
 };

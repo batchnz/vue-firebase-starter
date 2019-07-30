@@ -1,14 +1,12 @@
 <template>
-  <form @submit.prevent="handleSubmit" :class="className">
+  <form @submit.prevent="handleSubmit">
     <VRow>
       <!-- Password -->
       <VColumn size="1/2">
         <VLabel label-for="password" text="Password" />
         <VInput
           id="password"
-          v-model="form.password"
-          :value="form.password"
-          name="password"
+          :value.sync="form.password"
           type="password"
           autocomplete="new-password"
         />
@@ -18,9 +16,7 @@
         <VLabel label-for="password-confirm" text="Confirm Password" />
         <VInput
           id="password-confirm"
-          v-model="form.passwordConfirm"
-          :value="form.passwordConfirm"
-          name="password-confirm"
+          :value.sync="form.passwordConfirm"
           type="password"
           autocomplete="new-password"
         />
@@ -51,11 +47,6 @@ export default {
     VButton
   },
   props: {
-    className: {
-      type: String,
-      default: "",
-      required: false
-    },
     isSubmitting: {
       type: Boolean,
       default: false,
@@ -73,6 +64,10 @@ export default {
   methods: {
     handleSubmit() {
       this.$emit("clicked", this.form);
+      if (this.form.password || this.form.passwordConfirm) {
+        this.form.password = "";
+        this.form.passwordConfirm = "";
+      }
     }
   }
 };

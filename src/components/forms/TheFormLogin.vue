@@ -5,8 +5,7 @@
         <VLabel text="Email" label-for="email" />
         <VInput
           id="email"
-          v-model="form.email"
-          name="email"
+          :value.sync="form.email"
           placeholder="walt@disney.com"
           type="email"
           autocomplete="username email"
@@ -16,8 +15,7 @@
         <VLabel label-for="password" text="Password" />
         <VInput
           id="password"
-          v-model="form.password"
-          name="password"
+          :value.sync="form.password"
           type="password"
           autocomplete="current-password"
         />

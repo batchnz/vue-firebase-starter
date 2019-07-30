@@ -5,10 +5,8 @@
         <VLabel label-for="project-name-create" text="Project Name" />
         <VInput
           id="project-name-create"
-          v-model="form.name"
-          :value="form.name"
+          :value.sync="form.name"
           type="text"
-          name="projectNameCreate"
           placeholder="...?"
         />
       </VColumn>
