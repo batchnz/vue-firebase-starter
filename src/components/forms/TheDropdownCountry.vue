@@ -1,10 +1,5 @@
 <template>
-  <VDropdown
-    id="country"
-    name="country"
-    v-model="selected"
-    @input="handleDropdown"
-  >
+  <VDropdown id="country" name="country" :value.sync="selected">
     <option
       v-for="country in countries"
       :key="country.value"
@@ -37,14 +32,15 @@ export default {
       ]
     };
   },
+  watch: {
+    selected(v) {
+      if (!v) return;
+      this.$emit("update:value", v);
+    }
+  },
   mounted() {
     if (this.value) {
       this.selected = this.value;
-    }
-  },
-  methods: {
-    handleDropdown(value) {
-      this.$emit("input", value);
     }
   }
 };
