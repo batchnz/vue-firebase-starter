@@ -33,14 +33,14 @@
     ]
   },
   "database": {
-    "rules": "database.rules.json"
+    "rules": "./.firebaseConfig/database.rules.json"
   },
   "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
+    "rules": "./.firebaseConfig/firestore.rules",
+    "indexes": "./.firebaseConfig/firestore.indexes.json"
   },
   "storage": {
-    "rules": "storage.rules"
+    "rules": "./.firebaseConfig/storage.rules"
   },
   "emulators": {
     "functions": {
