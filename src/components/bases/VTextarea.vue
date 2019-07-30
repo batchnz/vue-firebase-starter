@@ -7,7 +7,7 @@
     :placeholder="placeholder"
     :cols="cols"
     :rows="rows"
-    @input="handleInput"
+    @input="$emit('update:value', $event.target.value)"
   ></textarea>
 </template>
 
@@ -51,11 +51,6 @@ export default {
       type: String,
       default: "",
       required: false
-    }
-  },
-  methods: {
-    handleInput(e) {
-      this.$emit("input", e.target.value);
     }
   }
 };

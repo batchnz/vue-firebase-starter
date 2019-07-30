@@ -27,8 +27,9 @@ export default {
     name: {
       type: String,
       default: "",
-      required: true
+      required: false
     },
+    value: [String, Number],
     type: {
       type: String,
       default: "text",
@@ -44,7 +45,7 @@ export default {
     handleInput(e) {
       const inputValue =
         this.$props.type === "number" ? e.target.valueAsNumber : e.target.value;
-      this.$emit("input", inputValue, this.name);
+      this.$emit("update:value", inputValue);
     }
   }
 };

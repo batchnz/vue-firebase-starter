@@ -6,7 +6,7 @@
       :value="value"
       class="appearance-none block w-full bg-gray-300 text-gray-500 border border-gray-300 rounded py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 focus:shadow"
       required
-      @input="handleDropdown"
+      @input="$emit('update:value', $event.target.value)"
     >
       <slot />
     </select>
@@ -40,11 +40,6 @@ export default {
       type: String,
       default: "",
       required: false
-    }
-  },
-  methods: {
-    handleDropdown(e) {
-      this.$emit("input", e.target.value, this.name);
     }
   }
 };
