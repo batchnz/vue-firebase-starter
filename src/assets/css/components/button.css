@@ -1,0 +1,43 @@
+.button {
+  @apply leading-tight text-gray-900 font-semibold inline-block text-center w-full py-3 px-6 no-underline border border-gray-200 rounded shadow;
+
+  &:hover,
+  &:focus {
+    @apply outline-none;
+  }
+
+  &--primary {
+    @apply bg-purple-400 text-white;
+
+    &:hover,
+    &:focus {
+      @apply bg-purple-400;
+    }
+  }
+
+  &--secondary {
+    @apply bg-white text-black;
+
+    &:hover,
+    &:focus {
+      @apply bg-gray-300;
+    }
+  }
+
+  &--danger {
+    @apply bg-red-400 text-white;
+
+    &:hover,
+    &:focus {
+      @apply bg-red-300;
+    }
+  }
+
+  &--tiny {
+    @apply text-sm py-2;
+  }
+  
+  &--small {
+    @apply py-2;
+  }
+}

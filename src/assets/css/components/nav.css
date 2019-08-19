@@ -1,0 +1,11 @@
+.nav {
+  @apply text-sm font-medium text-right p-6 mb-4;
+
+  &__item {
+    @apply text-black no-underline ml-5;
+
+    &.router-link-exact-active {
+      @apply text-purple-400;
+    }
+  }
+}
