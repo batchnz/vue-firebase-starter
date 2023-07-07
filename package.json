@@ -28,7 +28,7 @@
     "postcss-property-lookup": "^2.0.0",
     "postcss-reporter": "^6.0.1",
     "register-service-worker": "^1.6.2",
-    "stylelint": "^10.1.0",
+    "stylelint": "^15.10.1",
     "tiptap": "^1.23.0",
     "tiptap-extensions": "^1.24.0",
     "uuid": "^3.3.2",
